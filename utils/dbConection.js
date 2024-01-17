@@ -11,8 +11,7 @@ async function conectDb (req, res, next) {
         await mongoose.connect (
             uri,
       { dbName: "GestionDeTareas",
-      useNewUrlParser: true,
-      useUnifiedTopology: true,} 
+      } 
     );
     console.log("Coneccion exitosa");
     next();

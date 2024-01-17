@@ -7,6 +7,6 @@ const authController = require('../Controllers/AuthController');
 routerAuth.post('/register', authController.register);
 routerAuth.post('/login', authController.login);
 routerAuth.put('/:id', authController.updateUser);
-routerAuth.delete('/:username', authController.eraseUser);
+routerAuth.delete('/:id', authController.deleteuser);
 
 module.exports = routerAuth;

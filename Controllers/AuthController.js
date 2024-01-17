@@ -88,12 +88,12 @@ const updateUser = async (req, res) => {
   }
 };
 
-const eraseUser = async (req, res) => {
+const deleteuser = async (req, res) => {
   try {
-    const { username } = req.body;
+    const userid = req.params.id;
 
     // Verifica si el usuario existe
-    let deleteUser = await userModel.findOneAndDelete(username, { username });
+    let deleteUser = await userModel.findByIdAndDelete(userid);
 
     if (!deleteUser) {
       return res
@@ -113,6 +113,6 @@ const eraseUser = async (req, res) => {
 module.exports = {
   register,
   login,
-  eraseUser,
+  deleteuser,
   updateUser,
 };

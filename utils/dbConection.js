@@ -13,7 +13,7 @@ async function conectDb (req, res, next) {
       { dbName: "GestionDeTareas",
       } 
     );
-    console.log("Coneccion exitosa");
+    console.log("Conexión exitosa");
     next();
     } catch (error) {
         console.error("Error:", error);

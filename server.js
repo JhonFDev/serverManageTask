@@ -1,19 +1,25 @@
 const express = require("express");
-const cors = require("cors");
 const app = express();
-const port = 3000;
+const port = 5000;
 
+const conectDb = require("./utils/dbConection");
+const userRouter = require("./Routes/users");
+const tasksRouter = require("./Routes/tasks");
+const authRouter = require("./Routes/auth");
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000"],
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
-  );
-  
-  app.use(express.json());
-  
-  app.listen(port, () => {
-    console.log(`server started on port ${port}`);
-  });
+const cors = require("cors");
+const {validateToken} = require("./utils/jwt");
+
+app.use(cors());
+app.use(express.json());
+
+// Implementa los routers en las rutas correspondientes
+app.use("/users",  conectDb, userRouter);
+app.use("/tasks",  conectDb, tasksRouter);
+app.use("/auth", conectDb, authRouter);
+
+// Resto de la configuración y rutas del servidor
+
+const server = app.listen(port, () => {
+  console.log(`Servidor iniciado en el puerto ${port}`);
+});

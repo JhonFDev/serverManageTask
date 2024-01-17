@@ -9,6 +9,6 @@ routerTask.post('/', authMiddleware, taskcontroller.createTask);
 routerTask.get('/', authMiddleware, taskcontroller.getAllTasks);
 routerTask.get('/:id', authMiddleware, taskcontroller.getTaskById);
 routerTask.put('/:id', authMiddleware, taskcontroller.updateTask);
-routerTask.delete('/:id', authMiddleware, taskcontroller.deleteTask);
+routerTask.delete('/:title', authMiddleware, taskcontroller.deleteTask);
 
 module.exports = routerTask;

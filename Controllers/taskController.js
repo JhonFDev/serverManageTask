@@ -82,10 +82,10 @@ const updateTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
   try {
-    const taskId = req.params.id;
+    const {title} = req.body;
 
     // Elimina la tarea por su ID
-    const deleteTask = await Task.findByIdAndRemove(taskId);
+    const deleteTask = await Task.findOneAndDelete(title, {title});
 
     if (deleteTask) {
       res

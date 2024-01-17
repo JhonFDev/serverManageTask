@@ -4,10 +4,10 @@ require("dotenv").config();
 
 
 module.exports = (req, res, next) => {
-  const token = req.header('x-auth-token');
+  const token = req.header("authorization");
 
   if (!token) {
-    return res.status(401).json({ msg: 'No token, authorization denied' });
+    return res.status(401).json({ msg: 'Acceso denegado, se requiere un token' });
   }
 
   try {
@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
     req.user = decoded.user;
     next();
   } catch (err) {
-    res.status(401).json({ msg: 'Token is not valid' });
+    res.status(401).json({ msg: 'Acceso denegado, token expirado o incorrecto' });
   }
 };
 
